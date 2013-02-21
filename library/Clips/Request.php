@@ -34,7 +34,7 @@ class Clips_Request {
 		self::$_POST = $_POST;
 		self::$_FILES = $_FILES;
 		self::$_COOKIE = $_COOKIE;
-		self::$_BASE = 'http://'.$_SERVER['SERVER_NAME'].substr($_SERVER['SCRIPT_NAME'],0,strrpos($_SERVER['SCRIPT_NAME'], "/")).'/';
+		self::$_BASE = ($_SERVER['HTTPS'] ? 'https://':'http://').$_SERVER['SERVER_NAME'].substr($_SERVER['SCRIPT_NAME'],0,strrpos($_SERVER['SCRIPT_NAME'], "/")).'/';
 		self::$_DIR = substr($_SERVER['SCRIPT_NAME'], 1, strpos($_SERVER['SCRIPT_NAME'], '/', 1));
 
 	}
