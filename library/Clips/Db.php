@@ -97,6 +97,9 @@ class Clips_Db {
 		$instance -> _config['username'] = $config['username'];
 		$instance -> _config['password'] = $config['password'];
 
+		if (isset($config['port']))
+			$instance -> _config['port'] = $config['port'];		
+		
 		if (isset($config['logging']))
 			$instance -> _config['logging'] = $config['logging'];
 
@@ -116,7 +119,7 @@ class Clips_Db {
             $instance -> _config['driver_options'][1002] = "SET NAMES '" . $config['charset'] . "'"; // 1002 = PDO::MYSQL_ATTR_INIT_COMMAND
         }
 
-		$instance -> _db = new PDO($instance -> _config['engine'].':host='.$instance -> _config['host'].';dbname='.$instance -> _config['dbname'], $instance -> _config['username'], $instance -> _config['password'], $instance -> _config['driver_options']);
+		$instance -> _db = new PDO($instance -> _config['engine'].':host='.$instance -> _config['host'].';dbname='.$instance -> _config['dbname'].';port='.$instance -> _config['port'], $instance -> _config['username'], $instance -> _config['password'], $instance -> _config['driver_options']);
 		
 		$instance -> _db -> setAttribute(PDO::ATTR_ERRMODE, $instance -> _config['error_mode']);
 

@@ -54,12 +54,7 @@ class Clips_Validate_Mail {
 
     public static function isValid() {
 
-		$pattern = '/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([.]+)+([a-zA-Z0-9\_-]+)+$/';
-
-		if (!preg_match($pattern, self::$_value)) return false;
-
-		return true;
-
+		return filter_var(self::$_value, FILTER_VALIDATE_EMAIL);
 
     }
 
